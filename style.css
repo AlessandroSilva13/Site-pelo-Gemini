@@ -1,12 +1,11 @@
 /* ==========================================================================
-   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V22.0 - MOBILE CORRIGIDO)
+   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V23.0 - MOBILE CLÁSSICO)
    ========================================================================== */
 
 /* 1. FONTES E CORES */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
-    /* Paleta Platinum & Taupe */
     --taupe-dark: #544844;
     --taupe-light: #8C7B75;
     --bege-fundo: #EAEAEA;
@@ -133,11 +132,11 @@ nav ul li a:hover::after { width: 100%; }
 .stats-box strong { font-size: 3rem; color: #E8E0DD; font-family: 'Playfair Display'; font-style: italic; }
 .stats-box span { font-size: 0.85rem; text-transform: uppercase; margin-left: 10px; letter-spacing: 1px; }
 
-/* 8. SEÇÃO TRATAMENTOS (LAYOUT SPLIT & STICKY) */
+/* 8. SEÇÃO TRATAMENTOS (LAYOUT SPLIT & STICKY NO DESKTOP) */
 #especialidades {
     padding: 100px 0;
     position: relative;
-    background-color: var(--bege-claro);
+    background-color: var(--bege-claro); /* Cor padrão (igual V1) */
     display: block; width: 100%; clear: both;
 }
 
@@ -189,7 +188,7 @@ nav ul li a:hover::after { width: 100%; }
 /* DESTAQUE: PRIMEIRA CONSULTA (3 COLUNAS) */
 @media (min-width: 992px) {
     .card-destaque-bento { 
-        grid-column: span 3; /* Ocupa linha inteira */
+        grid-column: span 3; /* Ocupa linha inteira no PC */
         flex-direction: row; align-items: center; gap: 40px; 
     }
 }
@@ -232,7 +231,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .dados-legais a { color: #FFF; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4); transition: 0.3s; }
 .dados-legais a:hover { color: var(--taupe-light); border-bottom-style: solid; }
 
-/* 10. RESPONSIVIDADE E CORREÇÃO MOBILE */
+/* 10. RESPONSIVIDADE E VOLTA AO PADRÃO V1 NO MOBILE */
 @media (max-width: 992px) {
     /* Ajustes Gerais */
     .secao-destaque .sobre-wrapper { flex-direction: column; text-align: center; padding-top: 60px; }
@@ -240,53 +239,35 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .foto-dentista-recortada img { height: 45vh; max-width: 90%; }
     .hero h1 { font-size: 3rem; }
 
-    /* --- MOBILE: TRATAMENTOS COM FUNDO (CORRIGIDO) --- */
+    /* --- MOBILE CLÁSSICO (IGNORA FOTO DE FUNDO) --- */
+    
     /* 1. Remove layout dividido */
     .layout-split { display: block; }
 
-    /* 2. Remove a foto física (para não duplicar) */
+    /* 2. ESCONDE A FOTO no mobile (Volta ao design simples V1) */
     .coluna-foto-sticky { display: none !important; }
 
-    /* 3. Aplica o fundo na seção (BLINDADO) */
-    #especialidades {
-        /* Gradiente escuro + Imagem */
-        background: 
-            linear-gradient(to bottom, rgba(84, 72, 68, 0.85), rgba(84, 72, 68, 0.95)), 
-            url('assets/dra-vertical.jpg') no-repeat center center !important;
-        
-        background-size: cover !important;
-        background-attachment: scroll !important; /* Importante: Scroll é mais seguro que Fixed no mobile */
-        
-        position: relative;
-        z-index: 1;
-        color: white; 
-        padding: 80px 0;
-    }
-
-    /* 4. Ajusta Grid para 1 Coluna */
+    /* 3. Garante Grid Simples */
     .coluna-grid-conteudo { width: 100%; }
-    .cards-grid-completo { grid-template-columns: 1fr; } 
+    .cards-grid-completo { grid-template-columns: 1fr; } /* 1 Coluna */
     
+    /* 4. Destaque volta ao normal (Vertical) */
     .card-destaque-bento {
         grid-column: span 1; 
         flex-direction: column; text-align: center; padding: 45px 35px; 
     }
     .card-destaque-bento i { margin-bottom: 20px; }
 
-    /* 5. Cards Vidro (Translúcidos) */
-    .card {
-        background: rgba(255, 255, 255, 0.1); /* Vidro */
-        backdrop-filter: blur(8px); /* Desfoque */
-        -webkit-backdrop-filter: blur(8px); /* Safari */
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white; 
-        box-shadow: none;
+    /* 5. Garante legibilidade do texto (Cor original) */
+    #especialidades {
+        background: var(--bege-claro); /* Fundo Bege Simples */
+        color: var(--texto); /* Texto Escuro Original */
     }
-    
-    /* Força texto branco */
-    .card i { background: rgba(255,255,255,0.2); color: white; }
-    .card h3, .card p { color: white !important; }
-    .coluna-grid-conteudo h2, .coluna-grid-conteudo p { color: white; text-align: center; }
+    .coluna-grid-conteudo h2, 
+    .coluna-grid-conteudo p { 
+        color: var(--taupe-dark); 
+        text-align: center; 
+    }
 }
 
 @media (max-width: 768px) {
