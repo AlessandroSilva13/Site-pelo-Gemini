@@ -210,3 +210,28 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .btn-flutuante { width: 60px; height: 60px; padding: 0; justify-content: center; }
     .hero h1 { font-size: 2.5rem; }
 }
+/* --- NOVO: DADOS LEGAIS (RODAPÉ) --- */
+.dados-legais {
+    margin-top: 25px;         /* Espaço acima */
+    padding-top: 25px;        /* Espaço interno */
+    border-top: 1px solid rgba(255,255,255,0.1); /* Linha fina e discreta */
+    font-size: 0.8rem;        /* Texto menor que o padrão */
+    color: rgba(255,255,255,0.7); /* Branco levemente transparente */
+    line-height: 1.6;
+}
+
+.dados-legais p {
+    margin-bottom: 5px;
+}
+
+.dados-legais a {
+    color: #FFF;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255,255,255,0.4); /* Sublinhado pontilhado chique */
+    transition: 0.3s;
+}
+
+.dados-legais a:hover {
+    color: var(--taupe-light); /* Muda para a cor da marca ao passar o mouse */
+    border-bottom-style: solid;
+}
