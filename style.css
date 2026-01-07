@@ -292,12 +292,18 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 
     /* 3. Coloca a foto como FUNDO da seção inteira */
     #especialidades {
+        /* Ordem: Gradiente Escuro (para leitura) -> Imagem */
         background: 
-            linear-gradient(to bottom, rgba(84, 72, 68, 0.85), rgba(84, 72, 68, 0.95)), 
-            url('assets/dra-vertical.jpg'); /* FOTO NO FUNDO */
-        background-size: cover;
-        background-position: center top;
-        background-attachment: fixed;
+            linear-gradient(to bottom, rgba(84, 72, 68, 0.90), rgba(84, 72, 68, 0.95)), 
+            url('assets/dra-vertical.jpg') no-repeat center center !important; /* !important força a troca */
+        
+        background-size: cover !important;
+        
+        /* MUDANÇA: 'scroll' funciona melhor em celulares que 'fixed' */
+        background-attachment: scroll !important; 
+        
+        position: relative;
+        z-index: 1; /* Garante que fique na camada certa */
         color: white; 
         padding: 80px 0;
     }
