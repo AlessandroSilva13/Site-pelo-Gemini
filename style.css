@@ -19,7 +19,12 @@
 
 /* 2. RESET GERAL */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Compensa a altura do menu fixo */
+    overflow-x: hidden;
+    width: 100%;
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
