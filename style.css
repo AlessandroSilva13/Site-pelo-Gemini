@@ -284,14 +284,23 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         z-index: 2;
     }
 
-    /* Ajuste de Textos */
+    /* ... Dentro de @media (max-width: 992px) ... */
+
+    /* Ajuste de Textos (+ Sombra Premium para Leitura) */
     .hero h1 {
-        font-size: 2.4rem; margin-bottom: 15px; 
-    }
-    .hero-subtexto {
-        font-size: 1rem; margin-bottom: 30px; padding: 0 10px;
+        font-size: 2.4rem;
+        margin-bottom: 15px;
+        /* Sombra suave escura: deslocamento X Y, desfoque, cor com transparência */
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
     }
 
+    .hero-subtexto {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        padding: 0 10px;
+        /* Sombra ligeiramente mais leve para o texto menor */
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.35);
+    }
     /* Grupo de Botões Mobile */
     .hero-cta-group {
         display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px;
@@ -331,7 +340,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .card-destaque-bento { grid-column: auto; }
     .card-destaque-bento i { margin-bottom: 20px; }
     
-    .coluna-grid-conteudo h2::after { content: ' (Arraste para o lado →)'; font-size: 0.8rem; font-weight: 300; opacity: 0.7; display: block; margin-top: 5px; font-style: italic; }
+    .coluna-grid-conteudo h2:before { content: ' (Arraste para o lado →)'; font-size: 0.8rem; font-weight: 300; opacity: 0.7; display: block; margin-top: 5px; font-style: italic; }
 }
 
 @media (max-width: 768px) {
