@@ -395,3 +395,60 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .btn-flutuante { width: 60px; height: 60px; padding: 0; justify-content: center; }
     .btn-flutuante span { display: none; }
 }
+/* ==========================================================
+   ADICIONE ISSO NO FINAL DO ARQUIVO CSS (FORA DO MEDIA QUERY)
+   Para garantir que não apareça no Desktop
+   ========================================================== */
+.controles-mobile { display: none; }
+
+
+/* ==========================================================
+   AGORA, DENTRO DO @MEDIA (max-width: 992px)
+   Atualize/Adicione estas partes:
+   ========================================================== */
+
+@media (max-width: 992px) {
+    
+    /* ... (Mantenha os códigos anteriores do Header, Hero, Menu...) ... */
+
+    /* 1. REMOVE O TEXTO ANTIGO DO TÍTULO */
+    .coluna-grid-conteudo h2:before {
+        content: none !important; /* Remove o "(Arraste para o lado)" antigo */
+    }
+
+    /* 2. ESTILO DOS NOVOS CONTROLES (Setas + Texto) */
+    .controles-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 25px;
+        padding-bottom: 20px;
+    }
+
+    .texto-arraste {
+        font-size: 0.85rem;
+        color: #8C7B75; /* Cor Taupe Light */
+        font-style: italic;
+        font-weight: 500;
+    }
+
+    .btn-nav {
+        background: white;
+        border: 1px solid #DDD;
+        color: var(--taupe-dark);
+        width: 45px; height: 45px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: 0.2s;
+    }
+
+    .btn-nav:active {
+        background: var(--taupe-dark);
+        color: white;
+        transform: scale(0.95);
+    }
+}
