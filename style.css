@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V32.0 - TRANSPARENT HEADER)
+   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V33.0 - FIX BOTOES IPHONE)
    ========================================================================== */
 
 /* 1. FONTES E CORES */
@@ -26,7 +26,7 @@ body {
     line-height: 1.9;
     color: var(--texto);
     background-color: var(--bege-fundo);
-    padding-top: 90px; /* Padrão Desktop */
+    padding-top: 90px;
     width: 100%;
     font-weight: 400;
 }
@@ -138,12 +138,18 @@ ul.desktop-menu li a:hover::after { width: 100%; }
     object-fit: contain; margin-bottom: -2px;
     filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.3)); transition: var(--transicao);
 }
+
+/* --- CORREÇÃO AQUI: MARGEM INFERIOR NOS BOTÕES --- */
 .botoes-interativos button {
-    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 12px 25px; color: white; border-radius: var(--radius-btn);
     cursor: pointer; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;
-    transition: var(--transicao); margin-right: 10px;
+    transition: var(--transicao); 
+    margin-right: 10px;
+    margin-bottom: 15px; /* Adicionado: Garante espaço quando empilhar no celular */
 }
+
 .active-btn { background: #FFF !important; color: var(--taupe-dark) !important; font-weight: 700; border-color: #FFF !important; }
 .caixa-texto-transparente {
     background: rgba(255, 255, 255, 0.1); padding: 35px; border-radius: 20px;
@@ -208,7 +214,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .btn-fechar { display: none; }
 .btn-sidebar-cta { display: none; }
 .quebra-mobile { display: none; }
-.menu-wrapper { display: none; } /* Garante que a gaveta suma no Desktop */
+.menu-wrapper { display: none; }
 
 /* ==========================================================
    MEDIA QUERY: DISPOSITIVOS MÓVEIS (Até 992px)
@@ -217,14 +223,14 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 
     /* --- 1. CONFIGURAÇÃO HEADER TRANSPARENTE (FUSÃO) --- */
     body {
-        padding-top: 0 !important; /* Remove espaço do topo para a foto subir */
+        padding-top: 0 !important;
     }
 
     header {
-        background: transparent !important; /* Fundo invisível */
-        box-shadow: none !important;        /* Sem sombra */
-        backdrop-filter: none !important;   /* Sem borrão */
-        position: absolute;                 /* Flutua por cima da foto */
+        background: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        position: absolute;
         top: 0; left: 0;
         width: 100%;
         border-bottom: none;
@@ -233,7 +239,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     /* Ajuste de Contraste (Texto Branco) */
     .nome-doutora {
         color: #FFF !important;
-        text-shadow: 0 2px 5px rgba(0,0,0,0.6); /* Sombra para leitura */
+        text-shadow: 0 2px 5px rgba(0,0,0,0.6);
     }
     
     .mobile-menu-icon {
@@ -243,13 +249,9 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     
     /* --- 2. CONFIGURAÇÕES PADRÃO MOBILE --- */
 
-    /* Esconde Menu Desktop */
     ul.desktop-menu { display: none !important; }
-
-    /* Fix iPhone */
     .quebra-mobile { display: inline; }
 
-    /* Botão Hambúrguer */
     .mobile-menu-icon {
         display: block;
         font-size: 1.8rem;
@@ -271,9 +273,9 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     }
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* Menu Lateral (Gaveta) */
+    /* Menu Lateral */
     .menu-wrapper {
-        display: flex; /* Reativa a gaveta no mobile */
+        display: flex;
         flex-direction: column;
         
         position: fixed;
@@ -291,7 +293,6 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     }
     .menu-wrapper.active { transform: translateX(0); }
 
-    /* Botão Fechar Sidebar */
     .sidebar-header {
         display: flex; justify-content: flex-end;
         margin-bottom: 20px;
@@ -302,7 +303,6 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         cursor: pointer; padding: 5px 10px;
     }
 
-    /* Links da Sidebar */
     nav ul.sidebar-links {
         display: flex; flex-direction: column;
         gap: 0; width: 100%; list-style: none;
@@ -322,7 +322,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         background: var(--taupe-dark); color: white;
     }
 
-    /* --- HERO MOBILE: FOTO & DEGRADÊ --- */
+    /* --- HERO MOBILE --- */
     .hero {
         padding: 630px 0 100px 0;
         position: relative; overflow: hidden;
@@ -385,7 +385,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .card-destaque-bento { grid-column: auto; }
     .card-destaque-bento i { margin-bottom: 20px; }
     
-    .coluna-grid-conteudo h3:before {
+    .coluna-grid-conteudo h2:before {
         content: ' (Arraste para o lado →)'; font-size: 0.8rem; font-weight: 300; opacity: 0.7;
         display: block; margin-top: 5px; font-style: italic;
     }
