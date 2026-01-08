@@ -21,21 +21,27 @@
    <header>
         <nav class="container">
             <div class="logo">
-                
-                <span class="nome-doutora">Dra.Camila Alves</span>
+                <span class="nome-doutora">Dra. Camila Alves</span>
             </div>
 
-            <div class="mobile-menu-icon" onclick="toggleMenu()">
+            <div class="mobile-menu-icon" onclick="toggleSidebar()">
                 <i class="fa-solid fa-bars"></i>
             </div>
 
-            <div class="menu-wrapper" id="menuPrincipal">
+            <div id="menuOverlay" class="menu-overlay" onclick="toggleSidebar()"></div>
+
+            <div class="menu-wrapper" id="menuLateral">
+                <div class="btn-fechar" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+
                 <ul>
-                    <li><a href="#sobre" onclick="toggleMenu()">Sobre</a></li>
-                    <li><a href="#especialidades" onclick="toggleMenu()">Tratamentos</a></li>
-                    <li><a href="#endereco" onclick="toggleMenu()">Localização</a></li>
+                    <li><a href="#sobre" onclick="toggleSidebar()">Sobre</a></li>
+                    <li><a href="#especialidades" onclick="toggleSidebar()">Tratamentos</a></li>
+                    <li><a href="#endereco" onclick="toggleSidebar()">Localização</a></li>
                 </ul>
-                <a href="https://wa.me/5588993251260" target="_blank" class="btn-agendar desktop-only">Conversar</a>
+                
+                <a href="https://wa.me/5588993251260" target="_blank" class="btn-agendar btn-sidebar-cta">Agendar Consulta</a>
             </div>
         </nav>
     </header>
