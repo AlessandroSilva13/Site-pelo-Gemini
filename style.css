@@ -355,3 +355,33 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     nav ul, .btn-agendar, .btn-flutuante span { display: none; }
     .btn-flutuante { width: 60px; height: 60px; padding: 0; justify-content: center; }
 }
+/* ==========================================================
+   FIX ESPECÍFICO PARA IPHONE (QUEBRA DE LINHA MANUAL)
+   ========================================================== */
+
+/* 1. NO COMPUTADOR: A quebra de linha NÃO existe (fica escondida) */
+.quebra-mobile {
+    display: none;
+}
+
+/* 2. NO CELULAR (IPHONE/ANDROID): A mágica acontece */
+@media (max-width: 992px) {
+    
+    /* Ativa a quebra de linha que colocamos no HTML */
+    .quebra-mobile {
+        display: inline; 
+    }
+
+    /* Ajuste de Segurança para iPhone:
+       Diminuímos levemente a fonte para garantir que caiba na largura
+       sem criar uma 4ª linha acidentalmente. */
+    .hero h1 {
+        font-size: 2.0rem !important; /* Tamanho ideal para iPhone */
+        line-height: 1.3 !important;  /* Altura entre as 3 linhas */
+        width: 100% !important;
+        max-width: none !important;   /* Remove restrições antigas */
+        
+        /* Garante que o texto respeite as quebras manuais */
+        white-space: normal; 
+    }
+}
