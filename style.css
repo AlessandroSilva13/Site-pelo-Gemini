@@ -293,12 +293,12 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         position: relative; 
         z-index: 2;
         
-        /* 1. SOMBRA DEFINIDA (Preto com 60% de opacidade) */
+        /* Sombra para leitura */
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
         
-        /* 2. FORÇA A QUEBRA EM 2 OU 3 LINHAS */
-        max-width: 12ch; /* Limita a ~12 caracteres por linha */
-        margin-left: auto;
+        /* O SEGREDO DAS 3 LINHAS: */
+        max-width: 15em;   /* Largura controlada para quebrar em 3 */
+        margin-left: auto; /* Centraliza o bloco de texto */
         margin-right: auto;
     }
 
