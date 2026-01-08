@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V28.0 - SIDEBAR FUNCIONAL)
+   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V30.0 - FINAL)
    ========================================================================== */
 
 /* 1. FONTES E CORES */
@@ -51,26 +51,27 @@ header {
 
 nav.container {
     display: flex;
-    justify-content: space-between; /* Garante logo na esq e ícone na dir */
+    justify-content: space-between;
     align-items: center;
 }
 
 .logo { display: flex; align-items: center; gap: 15px; }
-.logo img { height: 55px; width: auto; }
 
-.menu-wrapper { display: flex; align-items: center; gap: 40px; }
-nav ul { display: flex; list-style: none; gap: 35px; }
+/* 5. MENU DESKTOP (HORIZONTAL) */
+ul.desktop-menu {
+    display: flex; list-style: none; gap: 35px; align-items: center;
+}
 
-nav ul li a {
+ul.desktop-menu li a {
     text-decoration: none; color: var(--taupe-dark);
     font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
     letter-spacing: 1.5px; transition: var(--transicao); position: relative;
 }
-nav ul li a:hover { color: var(--taupe-light); }
-nav ul li a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: var(--taupe-light); transition: var(--transicao); }
-nav ul li a:hover::after { width: 100%; }
+ul.desktop-menu li a:hover { color: var(--taupe-light); }
+ul.desktop-menu li a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: var(--taupe-light); transition: var(--transicao); }
+ul.desktop-menu li a:hover::after { width: 100%; }
 
-/* 5. BOTÕES */
+/* 6. BOTÕES */
 .btn-agendar {
     border: 1px solid var(--taupe-dark); color: var(--taupe-dark);
     padding: 12px 30px; border-radius: var(--radius-btn);
@@ -98,19 +99,16 @@ nav ul li a:hover::after { width: 100%; }
 }
 .btn-flutuante:hover { transform: translateY(-5px); background: var(--taupe-dark); }
 
-/* 6. HERO (DESKTOP) */
+/* 7. HERO (DESKTOP) */
 .hero {
     padding: 160px 0; text-align: center;
     display: flex; justify-content: center;
-    background-color: var(--bege-claro);
-    position: relative;
+    background-color: var(--bege-claro); position: relative;
 }
-
 .hero-content {
     max-width: 900px; display: flex; flex-direction: column; align-items: center;
     position: relative; z-index: 5;
 }
-
 .hero h1 { font-size: 4.2rem; margin-bottom: 30px; }
 .hero-subtexto { margin-bottom: 40px; }
 
@@ -120,7 +118,7 @@ nav ul li a:hover::after { width: 100%; }
 .hero-overlay-mobile { display: none; }
 .hero-cta-group { display: block; }
 
-/* 7. SOBRE */
+/* 8. SOBRE */
 .secao-destaque {
     background: linear-gradient(135deg, #7D716A 0%, #544844 100%);
     color: #F9F9F9; display: block; width: 100%; clear: both;
@@ -157,7 +155,7 @@ nav ul li a:hover::after { width: 100%; }
 .stats-box strong { font-size: 3rem; color: #E8E0DD; font-family: 'Playfair Display'; font-style: italic; }
 .stats-box span { font-size: 0.85rem; text-transform: uppercase; margin-left: 10px; letter-spacing: 1px; }
 
-/* 8. TRATAMENTOS */
+/* 9. TRATAMENTOS */
 #especialidades { padding: 100px 0; position: relative; background-color: var(--bege-claro); display: block; width: 100%; clear: both; }
 .layout-split { display: flex; gap: 60px; align-items: flex-start; }
 .coluna-foto-sticky { width: 35%; position: sticky; top: 120px; height: auto; }
@@ -189,7 +187,7 @@ nav ul li a:hover::after { width: 100%; }
 .card-alerta i { color: #C07070 !important; background: #FFF0F0 !important; }
 .card-alerta:hover { border-color: #C07070; background: #FFFBFB; }
 
-/* 9. FOOTER */
+/* 10. FOOTER */
 #endereco { padding: 120px 0; background-color: var(--branco-card); display: block; width: 100%; }
 .mapa-container { height: 450px; width: 100%; background: #DDD; border-radius: var(--radius-card); border: 1px solid #CCC; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .mapa-container iframe { width: 100%; height: 100%; border: none; display: block; }
@@ -203,124 +201,167 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .dados-legais a:hover { color: var(--taupe-light); border-bottom-style: solid; }
 
 /* ==========================================================
-   MENU MOBILE & SIDEBAR (V29 - CORRIGIDO)
+   ELEMENTOS MOBILE BASE (Ocultos no Desktop)
    ========================================================== */
-
-/* 1. Ícone Hambúrguer (Apenas Mobile) */
-.mobile-menu-icon {
-    display: none; /* Escondido no Desktop */
-}
-
-/* 2. Sidebar (Escondida no Desktop) */
+.mobile-menu-icon { display: none; }
 .menu-overlay { display: none; }
 .btn-fechar { display: none; }
 .btn-sidebar-cta { display: none; }
+.quebra-mobile { display: none; }
 
 /* ==========================================================
-   MEDIA QUERY: CELULAR (ATÉ 992px)
+   MEDIA QUERY: DISPOSITIVOS MÓVEIS (Até 992px)
    ========================================================== */
 @media (max-width: 992px) {
 
-    /* --- BOTÃO DE ABRIR (HAMBÚRGUER) --- */
+    /* --- ESCONDE MENU DESKTOP --- */
+    ul.desktop-menu { display: none !important; }
+
+    /* --- FIX IPHONE (Quebra de Linha) --- */
+    .quebra-mobile { display: inline; }
+
+    /* --- MENU MOBILE (HAMBÚRGUER) --- */
     .mobile-menu-icon {
         display: block;
         font-size: 1.8rem;
         color: var(--taupe-dark);
         cursor: pointer;
         padding: 10px;
-        z-index: 2001; /* Fica no nível do Header */
+        z-index: 2001; /* Fica acima do header, abaixo do overlay */
     }
-    
-    /* Esconde botão desktop antigo para não duplicar */
-    .desktop-only { display: none !important; }
 
-    /* --- FUNDO ESCURO (OVERLAY) --- */
+    /* --- SIDEBAR OVERLAY --- */
     .menu-overlay {
         display: block;
         position: fixed; top: 0; left: 0;
         width: 100%; height: 100vh;
-        background: rgba(0, 0, 0, 0.6); /* Mais escuro para foco */
-        z-index: 3000; /* ACIMA de tudo, exceto a sidebar */
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 3000; /* Cobre tudo, menos a sidebar */
         opacity: 0; visibility: hidden;
         transition: 0.3s;
         backdrop-filter: blur(3px);
     }
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* --- A GAVETA (SIDEBAR) --- */
+    /* --- GAVETA LATERAL (SIDEBAR) --- */
     .menu-wrapper {
         position: fixed;
         top: 0; right: 0;
-        width: 80%; max-width: 320px; /* Largura confortável */
+        width: 80%; max-width: 320px;
         height: 100vh;
         background-color: #FFF;
-        z-index: 3001; /* O MAIOR Z-INDEX (Cobre o hambúrguer) */
+        z-index: 3001; /* Z-INDEX MÁXIMO (Cobre tudo) */
         
-        /* Animação */
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
         box-shadow: -10px 0 40px rgba(0,0,0,0.2);
         
-        /* Layout Interno */
         display: flex; flex-direction: column;
         padding: 25px;
     }
-    
-    /* Ativa a Sidebar */
     .menu-wrapper.active { transform: translateX(0); }
 
-    /* Cabeçalho da Sidebar (Onde fica o X) */
+    /* Cabeçalho da Sidebar (Botão Fechar) */
     .sidebar-header {
-        display: flex;
-        justify-content: flex-end; /* Joga o X para a direita */
+        display: flex; justify-content: flex-end;
         margin-bottom: 20px;
     }
-
-    /* Botão Fechar (X) */
     .btn-fechar {
         display: block;
-        font-size: 1.8rem;
-        color: var(--taupe-dark);
-        cursor: pointer;
-        padding: 5px 10px;
-        transition: 0.3s;
+        font-size: 1.8rem; color: var(--taupe-dark);
+        cursor: pointer; padding: 5px 10px;
     }
-    .btn-fechar:active { transform: scale(0.9); }
 
-    /* --- LISTA DE OPÇÕES --- */
+    /* Links da Sidebar */
     nav ul.sidebar-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0; width: 100%;
-        list-style: none; /* Remove bolinhas */
+        display: flex; flex-direction: column;
+        gap: 0; width: 100%; list-style: none;
     }
-
     nav ul.sidebar-links li {
-        width: 100%;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        width: 100%; border-bottom: 1px solid rgba(0,0,0,0.05);
     }
-
     nav ul.sidebar-links li a {
-        display: block;
-        padding: 20px 10px;
-        font-size: 1.1rem;
-        color: var(--taupe-dark) !important; /* Força cor escura */
-        font-weight: 500;
-        text-decoration: none;
+        display: block; padding: 20px 10px;
+        font-size: 1.1rem; color: var(--taupe-dark) !important;
+        font-weight: 500; text-decoration: none;
     }
-    
-    nav ul.sidebar-links li a:hover {
-        background-color: var(--bege-fundo);
-        padding-left: 20px; /* Efeito de deslize */
-    }
-
-    /* Botão CTA da Sidebar */
     .btn-sidebar-cta {
         display: block !important;
-        margin-top: auto; /* Empurra para o rodapé */
-        text-align: center;
-        width: 100%;
-        padding: 15px;
+        margin-top: auto;
+        text-align: center; width: 100%; padding: 15px;
         background: var(--taupe-dark); color: white;
     }
+
+    /* --- HERO MOBILE: FOTO & DEGRADÊ --- */
+    .hero {
+        padding: 630px 0 100px 0;
+        position: relative; overflow: hidden;
+    }
+    .hero-bg-mobile {
+        display: block; position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: top center;
+        z-index: 0;
+    }
+    .hero-overlay-mobile {
+        display: block; position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to bottom, rgba(234, 234, 234, 0) 0%, rgba(234, 234, 234, 0.4) 50%, rgba(234, 234, 234, 1) 85%);
+        z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    
+    .hero h1 {
+        font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px;
+        position: relative; z-index: 2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        max-width: 17em; margin-left: auto; margin-right: auto;
+        white-space: normal;
+    }
+    .hero-subtexto {
+        font-size: 1rem; margin-bottom: 30px; padding: 0 10px;
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.35);
+    }
+    
+    .hero-cta-group {
+        display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px;
+    }
+    .btn-mobile-pri { display: inline-block; width: 100%; }
+    .btn-mobile-sec {
+        background: transparent; color: var(--taupe-dark); border: 1px solid var(--taupe-dark);
+        width: 100%; padding: 15px 45px;
+    }
+    .btn-mobile-sec:hover { background: var(--taupe-dark); color: var(--bege-fundo); transform: none; }
+
+    /* --- SOBRE E TRATAMENTOS --- */
+    .secao-destaque .sobre-wrapper { flex-direction: column; text-align: center; padding-top: 60px; }
+    .foto-dentista-recortada { order: -1; width: 100%; justify-content: center; }
+    .foto-dentista-recortada img { height: 40vh; max-width: 85%; }
+
+    .layout-split { display: block; }
+    .coluna-foto-sticky { display: none !important; }
+    .coluna-grid-conteudo { width: 100%; }
+    
+    .cards-grid-completo {
+        display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+        gap: 15px; padding-bottom: 30px; scrollbar-width: none;
+    }
+    .cards-grid-completo::-webkit-scrollbar { display: none; }
+    
+    .card, .card-destaque-bento {
+        min-width: 85vw; scroll-snap-align: center; margin-right: 0;
+        flex-direction: column; text-align: center; padding: 45px 35px; align-items: center;
+    }
+    .card-destaque-bento { grid-column: auto; }
+    .card-destaque-bento i { margin-bottom: 20px; }
+    
+    .coluna-grid-conteudo h2:before {
+        content: ' (Arraste para o lado →)'; font-size: 0.8rem; font-weight: 300; opacity: 0.7;
+        display: block; margin-top: 5px; font-style: italic;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-flutuante { width: 60px; height: 60px; padding: 0; justify-content: center; }
+    .btn-flutuante span { display: none; }
 }

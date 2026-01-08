@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. Camila Alves| Odontologia</title>
+    <title>Dra. Camila Alves | Odontologia Premium</title>
     
     <link rel="stylesheet" href="style.css">
     
@@ -18,11 +18,18 @@
         <span>Agendar Consulta</span>
     </a>
 
-   <header>
+    <header>
         <nav class="container">
             <div class="logo">
                 <span class="nome-doutora">Dra. Camila Alves</span>
             </div>
+
+            <ul class="desktop-menu">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#especialidades">Tratamentos</a></li>
+                <li><a href="#endereco">Localização</a></li>
+                <li><a href="https://wa.me/5588993251260" target="_blank" class="btn-agendar">Conversar</a></li>
+            </ul>
 
             <div class="mobile-menu-icon" onclick="toggleSidebar()">
                 <i class="fa-solid fa-bars"></i>
@@ -31,7 +38,6 @@
             <div id="menuOverlay" class="menu-overlay" onclick="toggleSidebar()"></div>
 
             <div class="menu-wrapper" id="menuLateral">
-                
                 <div class="sidebar-header">
                     <div class="btn-fechar" onclick="toggleSidebar()">
                         <i class="fa-solid fa-xmark"></i>
@@ -117,7 +123,6 @@
                 <p class="subtitulo-grid" data-aos="fade-up">Cuidamos de cada detalhe do seu sorriso.</p>
                 
                 <div class="cards-grid-completo">
-                    
                     <a href="https://wa.me/5588993251260?text=Olá, gostaria de agendar uma consulta!" target="_blank" class="card card-destaque-bento" data-aos="fade-up">
                         <div class="badge-destaque">Comece Aqui</div>
                         <i class="fa-solid fa-medal"></i>
@@ -174,7 +179,7 @@
                 <p>Edifício Empresarial Premium | Sala 1002<br>Avenida Principal, 123 - Centro</p>
             </div>
             <div class="mapa-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.52830858485521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondres%2C%20Reino%20Unido!5e0!3m2!1spt-BR!2sbr!4v1644247545624!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975!2d-46.6565!3d-23.5615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.+Paulista%2C+S%C3%A3o+Paulo+-+SP!5e0!3m2!1spt-BR!2sbr!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -197,31 +202,26 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Configuração AOS
+        // AOS Init
         window.addEventListener('DOMContentLoaded', () => {
             AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
         });
 
-        // 1. Script dos Botões "Vida Acadêmica" e "Princípios" (CORRIGIDO)
+        // Script Botões Sobre
         function mostrarConteudo(id, btn) {
-            // Esconde todos os conteúdos
             document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
-            // Remove classe ativa de todos os botões
             document.querySelectorAll('.botoes-interativos button').forEach(b => b.classList.remove('active-btn'));
-            
-            // Mostra o conteúdo clicado
             document.getElementById(id).style.display = 'block';
-            // Ativa o botão clicado
             btn.classList.add('active-btn');
         }
 
-        // 2. Script do Menu Lateral Mobile (Toggle Sidebar)
+        // Script Menu Lateral
         function toggleSidebar() {
             const menu = document.getElementById('menuLateral');
             const overlay = document.getElementById('menuOverlay');
             
-            menu.classList.toggle('active');    // Abre/Fecha a gaveta
-            overlay.classList.toggle('active'); // Mostra/Esconde o fundo escuro
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
     </script>
 </body>
