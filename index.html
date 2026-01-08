@@ -235,12 +235,12 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // AOS Init
+        // 1. Inicialização do AOS (Animações)
         window.addEventListener('DOMContentLoaded', () => {
             AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
         });
 
-        // Script Botões Sobre
+        // 2. Script dos Botões "Vida Acadêmica" e "Princípios"
         function mostrarConteudo(id, btn) {
             document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
             document.querySelectorAll('.botoes-interativos button').forEach(b => b.classList.remove('active-btn'));
@@ -248,7 +248,7 @@
             btn.classList.add('active-btn');
         }
 
-        // Script Menu Lateral
+        // 3. Script do Menu Lateral (Mobile)
         function toggleSidebar() {
             const menu = document.getElementById('menuLateral');
             const overlay = document.getElementById('menuOverlay');
@@ -256,6 +256,29 @@
             menu.classList.toggle('active');
             overlay.classList.toggle('active');
         }
+
+        // 4. Script das Setas de Navegação (Carrossel Mobile)
+        // Garante que o código só rode depois que a tela carregar
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.cards-grid-completo');
+            const btnEsq = document.getElementById('btnEsq');
+            const btnDir = document.getElementById('btnDir');
+
+            // Verifica se os elementos existem antes de tentar usar (evita erros)
+            if (container && btnEsq && btnDir) {
+
+                // Quanto ele deve rolar a cada clique? (300px é aprox. o tamanho de um card)
+                const scrollAmount = 300;
+
+                btnDir.addEventListener('click', () => {
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                btnEsq.addEventListener('click', () => {
+                    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+        });
     </script>
 </body>
 
