@@ -385,3 +385,81 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         white-space: normal; 
     }
 }
+/* ==========================================================
+   MENU MOBILE (HAMBÚRGUER)
+   ========================================================== */
+
+/* 1. Oculta o ícone no Desktop */
+.mobile-menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--taupe-dark);
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* 2. Configuração Apenas para Mobile */
+@media (max-width: 992px) {
+    
+    /* Mostra o ícone de 3 barrinhas */
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    /* Esconde o botão "Conversar" duplicado no header (já tem na Hero) */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* O MENU (Estado Fechado - Padrão) */
+    .menu-wrapper {
+        position: absolute;
+        top: 100%; /* Fica logo abaixo do header */
+        left: 0;
+        width: 100%;
+        background-color: #FFFFFF; /* Fundo Branco Limpo */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        padding: 0;
+        
+        /* Efeito de abrir/fechar */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* O MENU (Estado Aberto - Ativado via JS) */
+    .menu-wrapper.active {
+        max-height: 300px; /* Altura suficiente para os links */
+    }
+
+    /* Estilo da Lista no Mobile */
+    nav ul {
+        flex-direction: column; /* Um embaixo do outro */
+        gap: 0;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 15px 0;
+        font-size: 0.9rem; /* Letra maior para dedo */
+        color: var(--taupe-dark);
+    }
+    
+    nav ul li a:hover {
+        background-color: var(--bege-fundo);
+        color: var(--taupe-dark);
+    }
+}

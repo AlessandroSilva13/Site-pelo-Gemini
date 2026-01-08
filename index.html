@@ -18,22 +18,27 @@
         <span>Agendar Consulta</span>
     </a>
 
-    <header>
+   <header>
         <nav class="container">
             <div class="logo">
-                <span class="nome-doutora"></span>
+                
+                <span class="nome-doutora">Dra.Camila Alves</span>
             </div>
-            <div class="menu-wrapper">
+
+            <div class="mobile-menu-icon" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="menu-wrapper" id="menuPrincipal">
                 <ul>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#especialidades">Tratamentos</a></li>
-                    <li><a href="#endereco">Localização</a></li>
+                    <li><a href="#sobre" onclick="toggleMenu()">Sobre</a></li>
+                    <li><a href="#especialidades" onclick="toggleMenu()">Tratamentos</a></li>
+                    <li><a href="#endereco" onclick="toggleMenu()">Localização</a></li>
                 </ul>
-                <a href="https://wa.me/5588993251260" target="_blank" class="btn-agendar">Conversar</a>
+                <a href="https://wa.me/5588993251260" target="_blank" class="btn-agendar desktop-only">Conversar</a>
             </div>
         </nav>
     </header>
-
     <section class="hero secao-bege">
         
         <img src="./Imagens/camila foto 2.jpeg" class="hero-bg-mobile" alt="Foto de Fundo">
@@ -178,24 +183,21 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // --- SEU SCRIPT EXISTENTE (NOME, AOS, ETC) ---
         const nomeDaDra = "Dra. Camila Alves";
-        function setNomeDra() {
-            document.querySelectorAll('.nome-doutora').forEach(el => el.textContent = nomeDaDra);
-            document.title = nomeDaDra + " | Odontologia Premium";
-            document.querySelectorAll('img').forEach(img => {
-                if(!img.alt.includes(nomeDaDra) && img.alt !== "Logo") img.alt += " - " + nomeDaDra;
-            });
-        }
+        function setNomeDra() { /* ... */ }
         window.addEventListener('DOMContentLoaded', () => {
             setNomeDra();
             AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
         });
-        function mostrarConteudo(id, btn) {
-            document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
-            document.querySelectorAll('.botoes-interativos button').forEach(b => b.classList.remove('active-btn'));
-            document.getElementById(id).style.display = 'block';
-            btn.classList.add('active-btn');
+        function mostrarConteudo(id, btn) { /* ... */ }
+
+        // --- NOVO SCRIPT: MENU MOBILE ---
+        function toggleMenu() {
+            const menu = document.getElementById('menuPrincipal');
+            menu.classList.toggle('active'); // Adiciona ou remove a classe que abre o menu
         }
     </script>
 </body>
