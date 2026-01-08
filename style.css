@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V31.0 - CORRIGIDO)
+   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V32.0 - TRANSPARENT HEADER)
    ========================================================================== */
 
 /* 1. FONTES E CORES */
@@ -26,7 +26,7 @@ body {
     line-height: 1.9;
     color: var(--texto);
     background-color: var(--bege-fundo);
-    padding-top: 90px;
+    padding-top: 90px; /* Padrão Desktop */
     width: 100%;
     font-weight: 400;
 }
@@ -38,7 +38,7 @@ body {
 /* 3. TIPOGRAFIA */
 h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--taupe-dark); font-weight: 400; letter-spacing: -0.02em; line-height: 1.15; }
 h1 em, h2 em { font-style: italic; font-family: 'Playfair Display', serif; }
-.nome-doutora { font-weight: 600; color: var(--taupe-dark); }
+.nome-doutora { font-weight: 600; color: var(--taupe-dark); transition: color 0.3s; }
 
 /* 4. HEADER */
 header {
@@ -208,30 +208,57 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .btn-fechar { display: none; }
 .btn-sidebar-cta { display: none; }
 .quebra-mobile { display: none; }
-.menu-wrapper { display: none; } /* CORREÇÃO AQUI: Garante que a gaveta suma no Desktop */
+.menu-wrapper { display: none; } /* Garante que a gaveta suma no Desktop */
 
 /* ==========================================================
    MEDIA QUERY: DISPOSITIVOS MÓVEIS (Até 992px)
    ========================================================== */
 @media (max-width: 992px) {
 
-    /* --- ESCONDE MENU DESKTOP --- */
+    /* --- 1. CONFIGURAÇÃO HEADER TRANSPARENTE (FUSÃO) --- */
+    body {
+        padding-top: 0 !important; /* Remove espaço do topo para a foto subir */
+    }
+
+    header {
+        background: transparent !important; /* Fundo invisível */
+        box-shadow: none !important;        /* Sem sombra */
+        backdrop-filter: none !important;   /* Sem borrão */
+        position: absolute;                 /* Flutua por cima da foto */
+        top: 0; left: 0;
+        width: 100%;
+        border-bottom: none;
+    }
+
+    /* Ajuste de Contraste (Texto Branco) */
+    .nome-doutora {
+        color: #FFF !important;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.6); /* Sombra para leitura */
+    }
+    
+    .mobile-menu-icon {
+        color: #FFF !important;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+    }
+    
+    /* --- 2. CONFIGURAÇÕES PADRÃO MOBILE --- */
+
+    /* Esconde Menu Desktop */
     ul.desktop-menu { display: none !important; }
 
-    /* --- FIX IPHONE (Quebra de Linha) --- */
+    /* Fix iPhone */
     .quebra-mobile { display: inline; }
 
-    /* --- MENU MOBILE (HAMBÚRGUER) --- */
+    /* Botão Hambúrguer */
     .mobile-menu-icon {
         display: block;
         font-size: 1.8rem;
-        color: var(--taupe-dark);
         cursor: pointer;
         padding: 10px;
         z-index: 2001;
     }
 
-    /* --- SIDEBAR OVERLAY --- */
+    /* Sidebar Overlay */
     .menu-overlay {
         display: block;
         position: fixed; top: 0; left: 0;
@@ -244,9 +271,9 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     }
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* --- GAVETA LATERAL (SIDEBAR) --- */
+    /* Menu Lateral (Gaveta) */
     .menu-wrapper {
-        display: flex; /* CORREÇÃO AQUI: Reativa a gaveta no celular */
+        display: flex; /* Reativa a gaveta no mobile */
         flex-direction: column;
         
         position: fixed;
@@ -264,7 +291,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     }
     .menu-wrapper.active { transform: translateX(0); }
 
-    /* Cabeçalho da Sidebar (Botão Fechar) */
+    /* Botão Fechar Sidebar */
     .sidebar-header {
         display: flex; justify-content: flex-end;
         margin-bottom: 20px;
@@ -358,7 +385,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .card-destaque-bento { grid-column: auto; }
     .card-destaque-bento i { margin-bottom: 20px; }
     
-    .coluna-grid-conteudo h3:before {
+    .coluna-grid-conteudo h2:before {
         content: ' (Arraste para o lado →)'; font-size: 0.8rem; font-weight: 300; opacity: 0.7;
         display: block; margin-top: 5px; font-style: italic;
     }
