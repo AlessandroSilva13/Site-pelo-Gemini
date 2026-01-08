@@ -1,12 +1,11 @@
 /* ==========================================================================
-   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V26.0 - INTEGRADO)
+   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V27.0 - HERO BLINDADO)
    ========================================================================== */
 
 /* 1. FONTES E CORES */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
-    /* Paleta */
     --taupe-dark: #544844;
     --taupe-light: #8C7B75;
     --bege-fundo: #EAEAEA;
@@ -20,7 +19,6 @@
 
 /* 2. RESET GERAL */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 
 body {
@@ -100,11 +98,14 @@ nav ul li a:hover::after { width: 100%; }
     text-align: center;
     display: flex; justify-content: center;
     background-color: var(--bege-claro);
+    position: relative; /* Necessário para o posicionamento absoluto mobile */
 }
 
 .hero-content {
     max-width: 900px;
     display: flex; flex-direction: column; align-items: center;
+    position: relative;
+    z-index: 5; /* Garante que texto fique acima da imagem mobile */
 }
 
 .hero h1 { font-size: 4.2rem; margin-bottom: 30px; }
@@ -112,6 +113,8 @@ nav ul li a:hover::after { width: 100%; }
 
 /* Esconde elementos mobile no desktop */
 .btn-mobile-pri { display: none; }
+.hero-bg-mobile { display: none; }
+.hero-overlay-mobile { display: none; }
 .hero-cta-group { display: block; }
 
 /* 7. SOBRE (CAPA) */
@@ -238,33 +241,60 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .dados-legais a:hover { color: var(--taupe-light); border-bottom-style: solid; }
 
 /* ==========================================================================
-   10. RESPONSIVIDADE & MOBILE PREMIUM
+   10. RESPONSIVIDADE & MOBILE PREMIUM (CORREÇÃO DE FOTO)
    ========================================================================== */
 @media (max-width: 992px) {
     
-    /* --- HERO MOBILE: FOTO DE FUNDO + DEGRADÊ --- */
+    /* --- HERO MOBILE: FOTO DE FUNDO (USANDO TAG HTML PARA GARANTIR) --- */
     .hero {
-        padding: 400px 0 80px 0; /* Espaço para o rosto da Dra */
-        
-        background: 
-            linear-gradient(to bottom, rgba(234, 234, 234, 0) 0%, rgba(234, 234, 234, 0.6) 50%, rgba(234, 234, 234, 1) 85%),
-            url('assets/dra-vertical.jpg') no-repeat center top !important;
-            
-        background-size: 100% auto !important; /* Foto ocupa largura */
+        padding: 420px 0 80px 0; /* Empurra o texto para baixo para ver a foto */
+        position: relative;
+        overflow: hidden; /* Garante que a foto não vaze */
     }
 
-    /* Ajuste de Textos acima do Degradê */
+    /* 1. Exibe a imagem de fundo física */
+    .hero-bg-mobile {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center; /* Foca no rosto da Dra */
+        z-index: 0;
+    }
+
+    /* 2. Exibe o degradê físico por cima da foto */
+    .hero-overlay-mobile {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Gradiente: Transparente em cima -> Cor sólida (#EAEAEA) em baixo */
+        background: linear-gradient(to bottom, rgba(234, 234, 234, 0) 0%, rgba(234, 234, 234, 0.4) 50%, rgba(234, 234, 234, 1) 85%);
+        z-index: 1;
+    }
+
+    /* 3. Garante que o texto fique ACIMA do degradê */
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Ajuste de Textos */
     .hero h1 {
-        font-size: 2.4rem; margin-bottom: 15px; position: relative; z-index: 2;
+        font-size: 2.4rem; margin-bottom: 15px; 
     }
     .hero-subtexto {
-        font-size: 1rem; margin-bottom: 30px; padding: 0 10px; position: relative; z-index: 2;
+        font-size: 1rem; margin-bottom: 30px; padding: 0 10px;
     }
 
-    /* Botões Mobile */
+    /* Grupo de Botões Mobile */
     .hero-cta-group {
         display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px;
-        position: relative; z-index: 2;
     }
     .btn-mobile-pri { display: inline-block; width: 100%; }
     .btn-mobile-sec {
@@ -295,6 +325,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         min-width: 85vw; /* Card ocupa quase toda a tela */
         scroll-snap-align: center;
         margin-right: 0;
+        
         flex-direction: column; text-align: center; padding: 45px 35px; align-items: center;
     }
     .card-destaque-bento { grid-column: auto; }
