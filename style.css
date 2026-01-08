@@ -247,7 +247,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     
     /* --- HERO MOBILE: FOTO DE FUNDO (USANDO TAG HTML PARA GARANTIR) --- */
     .hero {
-        padding: 500px 0 80px 0; /* Empurra o texto para baixo para ver a foto */
+        padding: 500px 0 100px 0; /* Empurra o texto para baixo para ver a foto */
         position: relative;
         overflow: hidden; /* Garante que a foto não vaze */
     }
