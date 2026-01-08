@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V30.0 - FINAL)
+   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V31.0 - CORRIGIDO)
    ========================================================================== */
 
 /* 1. FONTES E CORES */
@@ -203,11 +203,12 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 /* ==========================================================
    ELEMENTOS MOBILE BASE (Ocultos no Desktop)
    ========================================================== */
-.mobile-menu-icon { display: none; } /* <-- ESTA LINHA ESCONDE O MENU HAMBÚRGUER NO DESKTOP */
+.mobile-menu-icon { display: none; }
 .menu-overlay { display: none; }
 .btn-fechar { display: none; }
 .btn-sidebar-cta { display: none; }
 .quebra-mobile { display: none; }
+.menu-wrapper { display: none; } /* CORREÇÃO AQUI: Garante que a gaveta suma no Desktop */
 
 /* ==========================================================
    MEDIA QUERY: DISPOSITIVOS MÓVEIS (Até 992px)
@@ -222,7 +223,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 
     /* --- MENU MOBILE (HAMBÚRGUER) --- */
     .mobile-menu-icon {
-        display: block; /* <-- AQUI ELE VOLTA A APARECER APENAS NO CELULAR */
+        display: block;
         font-size: 1.8rem;
         color: var(--taupe-dark);
         cursor: pointer;
@@ -245,6 +246,9 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 
     /* --- GAVETA LATERAL (SIDEBAR) --- */
     .menu-wrapper {
+        display: flex; /* CORREÇÃO AQUI: Reativa a gaveta no celular */
+        flex-direction: column;
+        
         position: fixed;
         top: 0; right: 0;
         width: 80%; max-width: 320px;
@@ -256,7 +260,6 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
         box-shadow: -10px 0 40px rgba(0,0,0,0.2);
         
-        display: flex; flex-direction: column;
         padding: 25px;
     }
     .menu-wrapper.active { transform: translateX(0); }
