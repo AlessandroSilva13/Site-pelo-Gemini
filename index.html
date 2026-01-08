@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. <span class="nome-doutora"></span> | Odontologia Premium</title>
+    <title>Dra. <span class="nome-doutora">Camila Alves</span> | Odontologia Premium</title>
     
     <link rel="stylesheet" href="style.css">
     
@@ -18,7 +18,7 @@
         <span>Agendar Consulta</span>
     </a>
 
-   <header>
+    <header>
         <nav class="container">
             <div class="logo">
                 <span class="nome-doutora">Dra. Camila Alves</span>
@@ -45,6 +45,7 @@
             </div>
         </nav>
     </header>
+
     <section class="hero secao-bege">
         
         <img src="./Imagens/camila foto 2.jpeg" class="hero-bg-mobile" alt="Foto de Fundo">
@@ -52,12 +53,12 @@
         <div class="hero-overlay-mobile"></div>
 
         <div class="container hero-content" data-aos="fade-up">
-           <h1>
-    Cuidando do seu sorriso <br class="quebra-mobile"> 
-    com <em>excelência</em> <br class="quebra-mobile"> 
-    e suavidade.
-</h1>
-            <p class="hero-subtexto">Odontologia humanizada e de alto padrão com a <span class="nome-doutora"></span>.</p>
+            <h1>
+                Cuidando do seu sorriso <br class="quebra-mobile"> 
+                com <em>excelência</em> <br class="quebra-mobile"> 
+                e suavidade.
+            </h1>
+            <p class="hero-subtexto">Odontologia humanizada e de alto padrão com a <span class="nome-doutora">Dra. Camila Alves</span>.</p>
             
             <div class="hero-cta-group">
                 <a href="https://wa.me/5588993251260" target="_blank" class="btn-principal btn-mobile-pri">Agendar Agora</a>
@@ -77,16 +78,18 @@
                     <button class="active-btn" onclick="mostrarConteudo('formacao', this)">Vida Acadêmica</button>
                     <button onclick="mostrarConteudo('principios', this)">Meus Princípios</button>
                 </div>
+                
                 <div id="conteudo-dinamico" class="caixa-texto-transparente">
                     <div id="formacao" class="tab-content">
                         <h3>Formação de Excelência</h3>
-                        <p>Especialista em Reabilitação Oral e Estética Avançada. A <span class="nome-doutora"></span> possui formação internacional e dedica-se a transformar sorrisos com técnicas minimamente invasivas.</p>
+                        <p>Especialista em Reabilitação Oral e Estética Avançada. A <span class="nome-doutora">Dra. Camila Alves</span> possui formação internacional e dedica-se a transformar sorrisos com técnicas minimamente invasivas.</p>
                     </div>
                     <div id="principios" class="tab-content" style="display:none;">
                         <h3>Nossos Valores</h3>
                         <p>Ética, transparência e acolhimento absoluto. Acreditamos que a saúde bucal começa com a segurança e o conforto do paciente.</p>
                     </div>
                 </div>
+
                 <div class="stats-box">
                     <strong>+1k</strong>
                     <span>Sorrisos transformados <br> com carinho.</span>
@@ -112,7 +115,7 @@
                 <div class="cards-grid-completo">
                     
                     <a href="https://wa.me/5588993251260?text=Olá, gostaria de agendar uma consulta!" target="_blank" class="card card-destaque-bento" data-aos="fade-up">
-                        
+                        <div class="badge-destaque">Comece Aqui</div>
                         <i class="fa-solid fa-medal"></i>
                         <div> 
                             <h3>Primeira Consulta</h3>
@@ -167,7 +170,7 @@
                 <p>Edifício Empresarial Premium | Sala 1002<br>Avenida Principal, 123 - Centro</p>
             </div>
             <div class="mapa-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7962.779509889667!2d-38.473155!3d-3.7248980000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c7471311593793%3A0xb82bf82ef2d98e7b!2sPreta%20Bronze!5e0!3m2!1spt-BR!2sbr!4v1767829243382!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.52830858485521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondres%2C%20Reino%20Unido!5e0!3m2!1spt-BR!2sbr!4v1644247545624!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -183,25 +186,32 @@
 
             <div class="redes-sociais">
                 <a href="https://www.instagram.com/camilarapereira/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://wa.me/5588993251260" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // --- SEU SCRIPT EXISTENTE (NOME, AOS, ETC) ---
-        const nomeDaDra = "Dra. Camila Alves";
-        function setNomeDra() { /* ... */ }
+        // Configuração AOS
         window.addEventListener('DOMContentLoaded', () => {
-            setNomeDra();
             AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
         });
-        function mostrarConteudo(id, btn) { /* ... */ }
 
-        // --- NOVO SCRIPT: MENU MOBILE ---
-        // --- NOVO SCRIPT: SIDEBAR LATERAL ---
+        // 1. Script dos Botões "Vida Acadêmica" e "Princípios" (CORRIGIDO)
+        function mostrarConteudo(id, btn) {
+            // Esconde todos os conteúdos
+            document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+            // Remove classe ativa de todos os botões
+            document.querySelectorAll('.botoes-interativos button').forEach(b => b.classList.remove('active-btn'));
+            
+            // Mostra o conteúdo clicado
+            document.getElementById(id).style.display = 'block';
+            // Ativa o botão clicado
+            btn.classList.add('active-btn');
+        }
+
+        // 2. Script do Menu Lateral Mobile (Toggle Sidebar)
         function toggleSidebar() {
             const menu = document.getElementById('menuLateral');
             const overlay = document.getElementById('menuOverlay');
@@ -209,7 +219,6 @@
             menu.classList.toggle('active');    // Abre/Fecha a gaveta
             overlay.classList.toggle('active'); // Mostra/Esconde o fundo escuro
         }
-        
     </script>
 </body>
 </html>
