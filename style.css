@@ -203,180 +203,124 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .dados-legais a:hover { color: var(--taupe-light); border-bottom-style: solid; }
 
 /* ==========================================================
-   MENU MOBILE (SIDEBAR / GAVETA) - CÓDIGO UNIFICADO
+   MENU MOBILE & SIDEBAR (V29 - CORRIGIDO)
    ========================================================== */
 
-/* 1. Elementos Base (Escondidos no Desktop) */
-.mobile-menu-icon { display: none; }
+/* 1. Ícone Hambúrguer (Apenas Mobile) */
+.mobile-menu-icon {
+    display: none; /* Escondido no Desktop */
+}
+
+/* 2. Sidebar (Escondida no Desktop) */
 .menu-overlay { display: none; }
 .btn-fechar { display: none; }
 .btn-sidebar-cta { display: none; }
 
-/* 2. IPHONE FIX (Quebra de Linha) */
-.quebra-mobile { display: none; }
-
 /* ==========================================================
-   MEDIA QUERY: DISPOSITIVOS MÓVEIS (Até 992px)
+   MEDIA QUERY: CELULAR (ATÉ 992px)
    ========================================================== */
 @media (max-width: 992px) {
 
-    /* --- IPHONE FIX: ATIVA QUEBRA DE LINHA --- */
-    .quebra-mobile { display: inline; }
-
-    /* --- SIDEBAR: ESTRUTURA --- */
-    /* Mostra Ícone Hambúrguer */
+    /* --- BOTÃO DE ABRIR (HAMBÚRGUER) --- */
     .mobile-menu-icon {
         display: block;
         font-size: 1.8rem;
         color: var(--taupe-dark);
         cursor: pointer;
-        z-index: 2005; /* Acima de tudo */
         padding: 10px;
+        z-index: 2001; /* Fica no nível do Header */
     }
+    
+    /* Esconde botão desktop antigo para não duplicar */
+    .desktop-only { display: none !important; }
 
-    /* Fundo Escuro (Overlay) */
+    /* --- FUNDO ESCURO (OVERLAY) --- */
     .menu-overlay {
         display: block;
-        position: fixed;
-        top: 0; left: 0;
+        position: fixed; top: 0; left: 0;
         width: 100%; height: 100vh;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 2003;
+        background: rgba(0, 0, 0, 0.6); /* Mais escuro para foco */
+        z-index: 3000; /* ACIMA de tudo, exceto a sidebar */
         opacity: 0; visibility: hidden;
         transition: 0.3s;
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(3px);
     }
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* A Gaveta (Sidebar) */
+    /* --- A GAVETA (SIDEBAR) --- */
     .menu-wrapper {
         position: fixed;
         top: 0; right: 0;
-        width: 75%; max-width: 300px;
+        width: 80%; max-width: 320px; /* Largura confortável */
         height: 100vh;
         background-color: #FFF;
-        z-index: 2004; /* Acima do overlay, abaixo do ícone */
+        z-index: 3001; /* O MAIOR Z-INDEX (Cobre o hambúrguer) */
         
         /* Animação */
-        transform: translateX(100%); /* Escondido na direita */
+        transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.2);
         
         /* Layout Interno */
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 30px;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
-        display: flex; gap: 0; /* Reseta gap do desktop */
+        display: flex; flex-direction: column;
+        padding: 25px;
     }
-
-    /* Classe Ativa (Abre a Sidebar) */
+    
+    /* Ativa a Sidebar */
     .menu-wrapper.active { transform: translateX(0); }
+
+    /* Cabeçalho da Sidebar (Onde fica o X) */
+    .sidebar-header {
+        display: flex;
+        justify-content: flex-end; /* Joga o X para a direita */
+        margin-bottom: 20px;
+    }
 
     /* Botão Fechar (X) */
     .btn-fechar {
         display: block;
-        align-self: flex-end;
-        font-size: 1.5rem; color: var(--taupe-dark);
+        font-size: 1.8rem;
+        color: var(--taupe-dark);
         cursor: pointer;
-        margin-bottom: 20px;
-        padding: 10px;
+        padding: 5px 10px;
+        transition: 0.3s;
     }
+    .btn-fechar:active { transform: scale(0.9); }
 
-    /* Links dentro da Sidebar */
-    nav ul {
+    /* --- LISTA DE OPÇÕES --- */
+    nav ul.sidebar-links {
+        display: flex;
         flex-direction: column;
         gap: 0; width: 100%;
+        list-style: none; /* Remove bolinhas */
     }
-    nav ul li {
-        width: 100%; text-align: left;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    nav ul.sidebar-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
     }
-    nav ul li a {
-        display: block; padding: 20px 0;
-        font-size: 1.1rem; color: var(--taupe-dark); font-weight: 500;
+
+    nav ul.sidebar-links li a {
+        display: block;
+        padding: 20px 10px;
+        font-size: 1.1rem;
+        color: var(--taupe-dark) !important; /* Força cor escura */
+        font-weight: 500;
+        text-decoration: none;
     }
     
-    /* Botão "Agendar" dentro da Sidebar */
+    nav ul.sidebar-links li a:hover {
+        background-color: var(--bege-fundo);
+        padding-left: 20px; /* Efeito de deslize */
+    }
+
+    /* Botão CTA da Sidebar */
     .btn-sidebar-cta {
         display: block !important;
-        margin-top: auto; /* Joga para o rodapé da sidebar */
-        width: 100%; text-align: center;
-        background: var(--taupe-dark); color: #FFF;
+        margin-top: auto; /* Empurra para o rodapé */
+        text-align: center;
+        width: 100%;
+        padding: 15px;
+        background: var(--taupe-dark); color: white;
     }
-    
-    /* Esconde botão desktop original */
-    .desktop-only { display: none !important; }
-
-    /* --- HERO MOBILE: FOTO & DEGRADÊ --- */
-    .hero {
-        padding: 630px 0 100px 0;
-        position: relative; overflow: hidden;
-    }
-    .hero-bg-mobile {
-        display: block; position: absolute; top: 0; left: 0;
-        width: 100%; height: 100%;
-        object-fit: cover; object-position: top center;
-        z-index: 0;
-    }
-    .hero-overlay-mobile {
-        display: block; position: absolute; top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: linear-gradient(to bottom, rgba(234, 234, 234, 0) 0%, rgba(234, 234, 234, 0.4) 50%, rgba(234, 234, 234, 1) 85%);
-        z-index: 1;
-    }
-    .hero-content { position: relative; z-index: 2; }
-    
-    /* Tipografia Hero Mobile */
-    .hero h1 {
-        font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px;
-        position: relative; z-index: 2;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-        max-width: 17em; margin-left: auto; margin-right: auto;
-        white-space: normal;
-    }
-    .hero-subtexto {
-        font-size: 1rem; margin-bottom: 30px; padding: 0 10px;
-        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.35);
-    }
-    
-    /* Botões Hero Mobile */
-    .hero-cta-group {
-        display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px;
-    }
-    .btn-mobile-pri { display: inline-block; width: 100%; }
-    .btn-mobile-sec {
-        background: transparent; color: var(--taupe-dark); border: 1px solid var(--taupe-dark);
-        width: 100%; padding: 15px 45px;
-    }
-    .btn-mobile-sec:hover { background: var(--taupe-dark); color: var(--bege-fundo); transform: none; }
-
-    /* --- SOBRE (AJUSTES) --- */
-    .secao-destaque .sobre-wrapper { flex-direction: column; text-align: center; padding-top: 60px; }
-    .foto-dentista-recortada { order: -1; width: 100%; justify-content: center; }
-    .foto-dentista-recortada img { height: 40vh; max-width: 85%; }
-
-    /* --- TRATAMENTOS: CARROSSEL (SWIPE) --- */
-    .layout-split { display: block; }
-    .coluna-foto-sticky { display: none !important; }
-    .coluna-grid-conteudo { width: 100%; }
-    .cards-grid-completo {
-        display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
-        gap: 15px; padding-bottom: 30px; scrollbar-width: none;
-    }
-    .cards-grid-completo::-webkit-scrollbar { display: none; }
-    .card, .card-destaque-bento {
-        min-width: 85vw; scroll-snap-align: center; margin-right: 0;
-        flex-direction: column; text-align: center; padding: 45px 35px; align-items: center;
-    }
-    .card-destaque-bento { grid-column: auto; }
-    .card-destaque-bento i { margin-bottom: 20px; }
-    .coluna-grid-conteudo h2:before {
-        content: ' (Arraste para o lado →)'; font-size: 0.8rem; font-weight: 300; opacity: 0.7;
-        display: block; margin-top: 5px; font-style: italic;
-    }
-}
-
-@media (max-width: 768px) {
-    nav ul, .btn-agendar, .btn-flutuante span { display: none; }
-    .btn-flutuante { width: 60px; height: 60px; padding: 0; justify-content: center; }
 }

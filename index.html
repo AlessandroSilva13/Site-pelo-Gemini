@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. <span class="nome-doutora">Camila Alves</span> | Odontologia Premium</title>
+    <title>Dra. Camila Alves| Odontologia</title>
     
     <link rel="stylesheet" href="style.css">
     
@@ -18,7 +18,7 @@
         <span>Agendar Consulta</span>
     </a>
 
-    <header>
+   <header>
         <nav class="container">
             <div class="logo">
                 <span class="nome-doutora">Dra. Camila Alves</span>
@@ -31,12 +31,16 @@
             <div id="menuOverlay" class="menu-overlay" onclick="toggleSidebar()"></div>
 
             <div class="menu-wrapper" id="menuLateral">
-                <div class="btn-fechar" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-xmark"></i>
+                
+                <div class="sidebar-header">
+                    <div class="btn-fechar" onclick="toggleSidebar()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
                 </div>
 
-                <ul>
-                    <li><a href="#sobre" onclick="toggleSidebar()">Sobre</a></li>
+                <ul class="sidebar-links">
+                    <li><a href="#" onclick="toggleSidebar()">Início</a></li>
+                    <li><a href="#sobre" onclick="toggleSidebar()">Sobre a Dra.</a></li>
                     <li><a href="#especialidades" onclick="toggleSidebar()">Tratamentos</a></li>
                     <li><a href="#endereco" onclick="toggleSidebar()">Localização</a></li>
                 </ul>
@@ -45,7 +49,7 @@
             </div>
         </nav>
     </header>
-
+    
     <section class="hero secao-bege">
         
         <img src="./Imagens/camila foto 2.jpeg" class="hero-bg-mobile" alt="Foto de Fundo">
