@@ -201,10 +201,15 @@
         function mostrarConteudo(id, btn) { /* ... */ }
 
         // --- NOVO SCRIPT: MENU MOBILE ---
-        function toggleMenu() {
-            const menu = document.getElementById('menuPrincipal');
-            menu.classList.toggle('active'); // Adiciona ou remove a classe que abre o menu
+        // --- NOVO SCRIPT: SIDEBAR LATERAL ---
+        function toggleSidebar() {
+            const menu = document.getElementById('menuLateral');
+            const overlay = document.getElementById('menuOverlay');
+            
+            menu.classList.toggle('active');    // Abre/Fecha a gaveta
+            overlay.classList.toggle('active'); // Mostra/Esconde o fundo escuro
         }
+        
     </script>
 </body>
 </html>
