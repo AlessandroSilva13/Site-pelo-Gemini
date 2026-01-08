@@ -358,7 +358,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .card-destaque-bento { grid-column: auto; }
     .card-destaque-bento i { margin-bottom: 20px; }
     
-    .coluna-grid-conteudo h2:before {
+    .coluna-grid-conteudo h3:before {
         content: ' (Arraste para o lado →)'; font-size: 0.8rem; font-weight: 300; opacity: 0.7;
         display: block; margin-top: 5px; font-style: italic;
     }
