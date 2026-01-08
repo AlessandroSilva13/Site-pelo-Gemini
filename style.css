@@ -284,14 +284,22 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         z-index: 2;
     }
 
-    /* ... Dentro de @media (max-width: 992px) ... */
+   /* ... Dentro de @media (max-width: 992px) ... */
 
-    /* Ajuste de Textos (+ Sombra Premium para Leitura) */
     .hero h1 {
         font-size: 2.4rem;
-        margin-bottom: 15px;
-        /* Sombra suave escura: deslocamento X Y, desfoque, cor com transparência */
-        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
+        line-height: 1.2;
+        margin-bottom: 20px;
+        position: relative; 
+        z-index: 2;
+        
+        /* 1. SOMBRA DEFINIDA (Preto com 60% de opacidade) */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        
+        /* 2. FORÇA A QUEBRA EM 2 OU 3 LINHAS */
+        max-width: 12ch; /* Limita a ~12 caracteres por linha */
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-subtexto {
