@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V43.0 - FONTES ELEGANTES + FIX CARROSSEL)
+   CSS MASTER DEFINITIVO - ODONTOLOGIA PREMIUM (V48.0 - FOTOS EM PRIMEIRO PLANO/NÍTIDAS)
    ========================================================================== */
 
 /* 1. FONTES E CORES */
@@ -18,6 +18,12 @@
     --radius-card: 20px;
     --transicao: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* Scrollbar Personalizada (Apenas para Desktop) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bege-fundo); }
+::-webkit-scrollbar-thumb { background: var(--taupe-light); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--taupe-dark); }
 
 /* 2. RESET GERAL */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,6 +47,7 @@ body {
 .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; width: 100%; }
 .secao-bege { background-color: var(--bege-claro); }
 .secao-branca { background-color: var(--branco-card); }
+.texto-centralizado { text-align: center; }
 
 /* 3. TIPOGRAFIA */
 h1, h2, h3 { 
@@ -51,7 +58,6 @@ h1, h2, h3 {
     line-height: 1.15; 
 }
 
-/* Itálico padrão para fundos claros */
 h1 em, h2 em { 
     font-family: 'Playfair Display', serif; 
     font-style: italic; 
@@ -84,7 +90,13 @@ ul.desktop-menu li a:hover { color: var(--taupe-light); }
 ul.desktop-menu li a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: var(--taupe-light); transition: var(--transicao); }
 ul.desktop-menu li a:hover::after { width: 100%; }
 
-/* 6. BOTÕES */
+/* 6. BOTÕES & ANIMAÇÃO PULSAR */
+@keyframes pulse-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 .btn-agendar {
     border: 1px solid var(--taupe-dark); color: var(--taupe-dark);
     padding: 12px 30px; border-radius: var(--radius-btn);
@@ -110,10 +122,10 @@ ul.desktop-menu li a:hover::after { width: 100%; }
     display: flex; align-items: center; justify-content: center; 
     text-decoration: none; 
     font-size: 1.8rem; 
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.25);
     z-index: 9999; transition: var(--transicao);
+    animation: pulse-whatsapp 2s infinite; 
 }
-.btn-flutuante:hover { transform: translateY(-5px) scale(1.1); background: var(--taupe-dark); }
+.btn-flutuante:hover { transform: translateY(-5px) scale(1.1); background: var(--taupe-dark); animation: none; }
 
 /* --- BOTÃO DE PLAY E MODAL DE VÍDEO (VERTICAL 9:16) --- */
 .btn-play-video {
@@ -130,8 +142,7 @@ ul.desktop-menu li a:hover::after { width: 100%; }
     display: flex; align-items: center; justify-content: center;
     gap: 12px; transition: var(--transicao); cursor: pointer;
 }
-
-.btn-play-video i { font-size: 1rem; color: var(--taupe-light); }
+.btn-play-video i { font-size: 1rem; color: var(--dourado-luxo); }
 .btn-play-video:hover { background: rgba(88, 28, 40, 0.05); transform: translateY(-3px); }
 
 .video-modal-overlay {
@@ -166,7 +177,7 @@ ul.desktop-menu li a:hover::after { width: 100%; }
     background: transparent; border: none; color: #FFF;
     font-size: 2rem; cursor: pointer; transition: 0.3s;
 }
-.btn-fechar-video:hover { color: #FFF; transform: scale(1.1); }
+.btn-fechar-video:hover { color: var(--dourado-luxo); transform: scale(1.1); }
 
 /* 7. HERO (DESKTOP) */
 .hero {
@@ -185,11 +196,27 @@ ul.desktop-menu li a:hover::after { width: 100%; }
 .hero-overlay-mobile { display: none; }
 .hero-cta-group { display: flex; gap: 20px; justify-content: center; }
 
+/* ==========================================================
+   NOVA SECÇÃO: FOTO INTERMEDIÁRIA (EM PRIMEIRO PLANO/NÍTIDA)
+   ========================================================== */
+.secao-foto-intermediaria {
+    width: 100%; padding: 0; margin: 0; background-color: var(--bege-claro);
+    display: flex; overflow: hidden; position: relative; z-index: 10;
+    /* Sombra subtil por baixo para dar destaque de primeiro plano */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+}
+
+.secao-foto-intermediaria img {
+    width: 100%; height: auto; max-height: 600px; min-height: 300px;
+    object-fit: cover; object-position: center; display: block;
+}
+
 /* 8. SOBRE */
 .secao-destaque {
     background: linear-gradient(135deg, var(--taupe-light) 0%, var(--taupe-dark) 100%);
     color: #F9F9F9; display: block; width: 100%; clear: both;
     min-height: 90vh; position: relative; overflow: hidden; padding: 0;
+    z-index: 5; /* Garante que fica atrás da foto se sobrepuser */
 }
 .secao-destaque .sobre-wrapper {
     display: flex; align-items: center; justify-content: space-between;
@@ -198,8 +225,6 @@ ul.desktop-menu li a:hover::after { width: 100%; }
 }
 .conteudo-sobre { flex: 1; z-index: 2; padding-bottom: 50px; }
 .secao-destaque h2 { color: #FFF; font-size: 3.5rem; margin-bottom: 25px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
-
-/* Destaque "Única" em Branco e Itálico */
 .secao-destaque h2 em { color: #FFF; } 
 
 .descricao-destaque { color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; margin-bottom: 40px; max-width: 550px; }
@@ -211,10 +236,8 @@ ul.desktop-menu li a:hover::after { width: 100%; }
 }
 
 .botoes-interativos button {
-    font-family: 'Montserrat', sans-serif; 
-    background: rgba(255, 255, 255, 0.05); 
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 12px 25px; color: white; border-radius: var(--radius-btn);
+    font-family: 'Montserrat', sans-serif; background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.3); padding: 12px 25px; color: white; border-radius: var(--radius-btn);
     cursor: pointer; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;
     transition: var(--transicao); margin-right: 10px; margin-bottom: 15px; 
 }
@@ -231,7 +254,7 @@ ul.desktop-menu li a:hover::after { width: 100%; }
 .stats-box span { font-size: 0.85rem; text-transform: uppercase; margin-left: 10px; letter-spacing: 1px; }
 
 /* 9. TRATAMENTOS */
-#especialidades { padding: 100px 0; position: relative; background-color: var(--bege-claro); display: block; width: 100%; clear: both; }
+#especialidades { padding: 100px 0; position: relative; background-color: var(--bege-claro); display: block; width: 100%; clear: both; z-index: 5;}
 .layout-split { display: flex; gap: 60px; align-items: flex-start; }
 .coluna-foto-sticky { width: 35%; position: sticky; top: 120px; height: auto; }
 .foto-destaque { width: 100%; height: 80vh; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); }
@@ -257,12 +280,25 @@ ul.desktop-menu li a:hover::after { width: 100%; }
 .card-destaque-bento h3, .card-destaque-bento p { color: white !important; }
 .card-destaque-bento:hover { transform: translateY(-5px) scale(1.02); background: var(--taupe-dark); }
 .card-destaque-bento i { background: rgba(255, 255, 255, 0.1); color: white; font-size: 2.2rem; padding: 0; width: 80px; height: 80px; margin-bottom: 0; }
-.badge-destaque { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; color: white; }
 .card-alerta { background: #FFFBFB; border: 1px solid #EEDDDD; }
 .card-alerta i { color: #C07070 !important; background: #FFF0F0 !important; }
 .card-alerta:hover { border-color: #C07070; background: #FFFBFB; }
 
-/* 10. FOOTER */
+/* 10. DEPOIMENTOS (PROVA SOCIAL) */
+#depoimentos { padding: 100px 0; background-color: var(--branco-card); }
+.grid-depoimentos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px; }
+.card-depoimento {
+    background: var(--bege-claro); padding: 45px 35px; border-radius: var(--radius-card);
+    text-align: center; transition: var(--transicao); position: relative; border: 1px solid transparent;
+}
+.card-depoimento:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05); background: #FFF; border-color: rgba(0,0,0,0.02); }
+.card-depoimento i.fa-quote-left { font-size: 2.2rem; color: var(--dourado-luxo); opacity: 0.4; margin-bottom: 20px; }
+.card-depoimento p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--texto); line-height: 1.8; margin-bottom: 30px; }
+.paciente-info { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 25px; }
+.estrelas { color: var(--dourado-luxo); font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 2px; }
+.paciente-info strong { font-size: 0.8rem; color: var(--taupe-dark); letter-spacing: 1.5px; }
+
+/* 11. FOOTER & MAPA */
 #endereco { padding: 120px 0; background-color: var(--branco-card); display: block; width: 100%; }
 .mapa-container { height: 450px; width: 100%; background: #DDD; border-radius: var(--radius-card); border: 1px solid #CCC; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .mapa-container iframe { width: 100%; height: 100%; border: none; display: block; }
@@ -271,7 +307,6 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .redes-sociais a { color: rgba(255, 255, 255, 0.6); font-size: 1.6rem; transition: 0.3s; }
 .redes-sociais a:hover { color: white; transform: scale(1.2); }
 .dados-legais { margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); line-height: 1.6; }
-.dados-legais p { margin-bottom: 5px; }
 .dados-legais a { color: #FFF; text-decoration: none; border-bottom: 1px dotted rgba(255, 255, 255, 0.4); transition: 0.3s; }
 .dados-legais a:hover { color: var(--taupe-light); border-bottom-style: solid; }
 
@@ -284,7 +319,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
 .btn-sidebar-cta { display: none; }
 .quebra-mobile { display: none; }
 .menu-wrapper { display: none; }
-.controles-mobile { display: none; } /* Oculto no desktop, exibido no mobile */
+.controles-mobile { display: none; } 
 
 /* ==========================================================
    MEDIA QUERY: DISPOSITIVOS MÓVEIS (Até 992px)
@@ -295,23 +330,17 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     body { padding-top: 0 !important; }
 
     header {
-        background: transparent !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
+        background: transparent !important; box-shadow: none !important; backdrop-filter: none !important;
         position: absolute; top: 0; left: 0; width: 100%; border-bottom: none;
     }
 
-    .nome-doutora, .mobile-menu-icon {
-        color: #FFF !important; text-shadow: 0 2px 5px rgba(0,0,0,0.6);
-    }
+    .nome-doutora, .mobile-menu-icon { color: var(--taupe-dark) !important; text-shadow: none !important; }
     
     /* --- CONFIGURAÇÕES MENU MOBILE --- */
     ul.desktop-menu { display: none !important; }
     .quebra-mobile { display: inline; }
 
-    .mobile-menu-icon {
-        display: block; font-size: 1.8rem; cursor: pointer; padding: 10px; z-index: 2001;
-    }
+    .mobile-menu-icon { display: block; font-size: 1.8rem; cursor: pointer; padding: 10px; z-index: 2001; }
 
     .menu-overlay {
         display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
@@ -342,62 +371,48 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         background: var(--taupe-dark); color: white;
     }
 
-    /* --- HERO MOBILE --- */
-    .hero {
-        padding: 630px 0 100px 0; position: relative; overflow: hidden;
-    }
-    .hero-bg-mobile {
-        display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        object-fit: cover; object-position: top center; z-index: 0;
-    }
-    .hero-overlay-mobile {
-        display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(to bottom, rgba(88, 28, 40, 0) 0%, rgba(88, 28, 40, 0.4) 50%, rgba(88, 28, 40, 1) 85%);
-        z-index: 1;
-    }
-    .hero-content { position: relative; z-index: 2; }
+    /* --- HERO MOBILE (SEM FOTO, TEXTO SUBIDO) --- */
+    .hero { padding: 140px 0 60px 0; background-color: var(--bege-claro); }
+    .hero-bg-mobile { display: none !important; }
+    .hero-overlay-mobile { display: none !important; }
     
     .hero h1 {
-        font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; position: relative; z-index: 2; color: #FFF;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); max-width: 17em; margin-left: auto; margin-right: auto;
+        font-size: 2.6rem; line-height: 1.2; margin-bottom: 20px; 
+        color: var(--taupe-dark) !important; text-shadow: none !important; 
+        max-width: 17em; margin-left: auto; margin-right: auto;
     }
-
-    /* Destaque "Excelência" em Branco e Itálico no Mobile */
-    .hero h1 em { color: #FFF; }
+    .hero h1 em { color: var(--taupe-light) !important; }
 
     .hero-subtexto {
         font-size: 1rem; margin-bottom: 30px; padding: 0 10px;
-        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.35); color: #FFF;
+        color: var(--texto) !important; text-shadow: none !important;
     }
     
-    .hero-cta-group {
-        display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; margin: 0 auto;
-    }
+    .hero-cta-group { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; margin: 0 auto; }
     
     .btn-mobile-pri { 
-        font-family: 'Montserrat', sans-serif;
-        display: inline-block; width: 100%; background: #FFFFFF !important; 
-        color: var(--taupe-dark) !important; border: 1px solid #FFFFFF !important;
+        font-family: 'Montserrat', sans-serif; display: inline-block; width: 100%; 
+        background: var(--taupe-dark) !important; color: #FFF !important; border: 1px solid var(--taupe-dark) !important;
     }
     
     .btn-play-video {
         width: 100%; justify-content: center; background: transparent !important;
-        border: 1px solid rgba(255, 255, 255, 0.4) !important; color: #FFF !important;
+        border: 1px solid var(--taupe-dark) !important; color: var(--taupe-dark) !important; 
     }
-    .btn-play-video i { color: #FFF; }
+    .btn-play-video i { color: var(--taupe-light) !important; }
 
     /* --- SOBRE E TRATAMENTOS --- */
     .secao-destaque .sobre-wrapper { flex-direction: column; text-align: center; padding-top: 60px; }
-    .foto-dentista-recortada { order: -1; width: 100%; justify-content: center; }
-    .foto-dentista-recortada img { height: 40vh; max-width: 85%; }
+    
+    /* ESCONDE A FOTO DE RETRATO NO TELEMÓVEL */
+    .foto-dentista-recortada { display: none !important; }
 
     .layout-split { display: block; }
     .coluna-foto-sticky { display: none !important; }
     .coluna-grid-conteudo { width: 100%; }
     
     .cards-grid-completo {
-        display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
-        gap: 15px; padding-bottom: 30px; scrollbar-width: none;
+        display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding-bottom: 30px; scrollbar-width: none;
     }
     .cards-grid-completo::-webkit-scrollbar { display: none; }
     
@@ -408,7 +423,7 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
     .card-destaque-bento { grid-column: auto; }
     .card-destaque-bento i { margin-bottom: 20px; }
     
-    /* --- CORREÇÃO: CONTROLES DO CARROSSEL DE VOLTA --- */
+    /* --- CONTROLES DO CARROSSEL MOBILE --- */
     .coluna-grid-conteudo h2:before { content: none !important; }
     .coluna-grid-conteudo h2, .coluna-grid-conteudo .subtitulo-grid { text-align: center; }
 
@@ -416,15 +431,17 @@ footer { background: var(--taupe-dark); color: #EFEFEF; padding: 80px 0; text-al
         display: flex; align-items: center; justify-content: center; gap: 20px;
         margin-top: 25px; padding-bottom: 20px;
     }
-
     .texto-arraste { font-size: 0.85rem; color: #7a2838; font-style: italic; font-weight: 500; }
-
     .btn-nav {
         background: white; border: 1px solid #DDD; color: var(--taupe-dark);
         width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
         font-size: 1rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.2s;
     }
     .btn-nav:active { background: var(--taupe-dark); color: white; transform: scale(0.95); }
+
+    /* --- DEPOIMENTOS MOBILE --- */
+    .grid-depoimentos { grid-template-columns: 1fr; gap: 20px; }
+    .card-depoimento { padding: 35px 25px; }
 }
 
 @media (max-width: 768px) {
