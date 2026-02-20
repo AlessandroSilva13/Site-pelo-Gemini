@@ -114,18 +114,19 @@ ul.desktop-menu li a:hover::after { width: 100%; }
 .btn-principal:hover { background: transparent; color: var(--taupe-dark); transform: translateY(-3px); }
 
 .btn-flutuante {
-    position: fixed; right: 30px; bottom: 30px;
-    background: #25d366; color: white;
-    width: 60px; height: 60px;
-    padding: 0; 
-    border-radius: 50%; 
-    display: flex; align-items: center; justify-content: center; 
-    text-decoration: none; 
-    font-size: 1.8rem; 
-    z-index: 9999; transition: var(--transicao);
-    animation: pulse-whatsapp 2s infinite; 
+    position: fixed; right: 30px; bottom: 30px; background: #25d366; color: white;
+    /* Alterado de largura fixa para formato pílula com espaçamento interno */
+    height: 60px; padding: 0 25px; border-radius: 50px; 
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    text-decoration: none; font-size: 1.05rem; font-weight: 600; font-family: 'Montserrat', sans-serif; 
+    z-index: 9999; transition: var(--transicao); animation: pulse-whatsapp 2s infinite; 
 }
-.btn-flutuante:hover { transform: translateY(-5px) scale(1.1); background: var(--taupe-dark); animation: none; }
+.btn-flutuante i {
+    font-size: 1.8rem; /* Mantém o ícone do WhatsApp grande */
+}
+.btn-flutuante:hover { 
+    transform: translateY(-5px) scale(1.05); background: var(--taupe-dark); animation: none; 
+}
 
 /* --- BOTÃO DE PLAY E MODAL DE VÍDEO (VERTICAL 9:16) --- */
 .btn-play-video {
