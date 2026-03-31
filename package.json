@@ -1,0 +1,21 @@
+{
+  "name": "dracamilaalves",
+  "version": "1.0.0",
+  "description": "Website for Dra. Camila Alves - Odontologia Humanizada",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "build": "echo 'Static site - no build required'",
+    "start": "npx http-server -p 8080"
+  },
+  "keywords": [
+    "dental",
+    "website",
+    "odontologia"
+  ],
+  "author": "Alessandro Silva",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.12"
+  }
+}
