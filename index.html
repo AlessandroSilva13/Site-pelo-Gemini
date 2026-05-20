@@ -30,7 +30,8 @@
 
 <body>
 
-    <a href="https://wa.me/5585996217976" class="btn-flutuante" target="_blank" aria-label="Falar no WhatsApp">
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5585996217976" class="btn-flutuante" target="_blank" aria-label="Falar no WhatsApp" onclick="window.va('event', 'WhatsApp_Flutuante')">
         <i class="fa-brands fa-whatsapp"></i>
         <span>Agendar Consulta</span>
     </a>
@@ -45,7 +46,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#especialidades">Tratamentos</a></li>
                 <li><a href="#depoimentos">Pacientes</a></li>
-                <li><a href="https://wa.me/5585996217976" target="_blank" class="btn-agendar">Conversar</a></li>
+                <li><a href="https://wa.me/5585996217976" target="_blank" class="btn-agendar" onclick="window.va('event', 'WhatsApp_Header')">Conversar</a></li>
             </ul>
 
             <div class="mobile-menu-icon" onclick="toggleSidebar()">
@@ -68,7 +69,7 @@
                     <li><a href="#depoimentos" onclick="toggleSidebar()">Pacientes</a></li>
                 </ul>
 
-                <a href="https://wa.me/5585996217976" target="_blank" class="btn-agendar btn-sidebar-cta">Agendar Consulta</a>
+                <a href="https://wa.me/5585996217976" target="_blank" class="btn-agendar btn-sidebar-cta" onclick="window.va('event', 'WhatsApp_Menu_Mobile')">Agendar Consulta</a>
             </div>
         </nav>
     </header>
@@ -82,9 +83,10 @@
             </h1>
 
             <div class="hero-cta-group">
-                <a href="https://wa.me/5585996217976" target="_blank" class="btn-principal btn-mobile-pri">Agendar Agora</a>
+                <a href="https://wa.me/5585996217976" target="_blank" class="btn-principal btn-mobile-pri" onclick="window.va('event', 'WhatsApp_Destaque_Topo')">Agendar Agora</a>
                 
-                <button onclick="abrirVideo()" class="btn-play-video">
+                <!-- Botão de Vídeo -->
+                <button onclick="window.va('event', 'Video_Apresentacao'); abrirVideo()" class="btn-play-video">
                     <i class="fa-solid fa-play"></i> Conhecer a Experiência
                 </button>
             </div>
@@ -103,8 +105,9 @@
                     Odontologia focada no conforto. Transformamos sua visita ao dentista num momento de renovação e autoestima.
                 </p>
                 <div class="botoes-interativos">
-                    <button class="active-btn" onclick="mostrarConteudo('formacao', this)">Vida Acadêmica</button>
-                    <button onclick="mostrarConteudo('principios', this)">Meus Princípios</button>
+                    <!-- Abas interativas -->
+                    <button class="active-btn" onclick="window.va('event', 'Aba_Vida_Academica'); mostrarConteudo('formacao', this)">Vida Acadêmica</button>
+                    <button onclick="window.va('event', 'Aba_Meus_Principios'); mostrarConteudo('principios', this)">Meus Princípios</button>
                 </div>
 
                 <div id="conteudo-dinamico" class="caixa-texto-transparente">
@@ -132,7 +135,8 @@
                 <p class="subtitulo-grid" data-aos="fade-up">Cuidamos de cada detalhe do seu sorriso.</p>
 
                 <div class="cards-grid-completo" id="scrollContainer">
-                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar uma consulta!" target="_blank" class="card card-destaque-bento" data-aos="fade-up">
+                    <!-- Cards de Tratamentos -->
+                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar uma consulta!" target="_blank" class="card card-destaque-bento" data-aos="fade-up" onclick="window.va('event', 'Card_Primeira_Consulta')">
                         <i class="fa-solid fa-medal"></i>
                         <div>
                             <h3>Primeira Consulta</h3>
@@ -140,37 +144,37 @@
                         </div>
                     </a>
 
-                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar uma Limpeza!" target="_blank" class="card" data-aos="fade-up">
+                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar uma Limpeza!" target="_blank" class="card" data-aos="fade-up" onclick="window.va('event', 'Card_Limpeza')">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                         <h3>Limpeza</h3>
                         <p>Profilaxia completa para um sorriso saudável.</p>
                     </a>
 
-                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de saber sobre Clareamento!" target="_blank" class="card" data-aos="fade-up">
+                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de saber sobre Clareamento!" target="_blank" class="card" data-aos="fade-up" onclick="window.va('event', 'Card_Clareamento')">
                         <i class="fa-regular fa-gem"></i>
                         <h3>Clareamento</h3>
                         <p>Devolva o brilho natural dos seus dentes.</p>
                     </a>
 
-                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de informações sobre Canal!" target="_blank" class="card" data-aos="fade-up">
+                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de informações sobre Canal!" target="_blank" class="card" data-aos="fade-up" onclick="window.va('event', 'Card_Canal')">
                         <i class="fa-solid fa-tooth"></i>
                         <h3>Canal</h3>
                         <p>Tratamento endodôntico.</p>
                     </a>
 
-                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar uma Exodontia!" target="_blank" class="card" data-aos="fade-up">
+                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar uma Exodontia!" target="_blank" class="card" data-aos="fade-up" onclick="window.va('event', 'Card_Exodontia')">
                         <i class="fa-solid fa-hand-holding-medical"></i>
                         <h3>Exodontia</h3>
                         <p>Remoção de sisos e dentes comprometidos.</p>
                     </a>
 
-                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar Odontopediatria!" target="_blank" class="card" data-aos="fade-up">
+                    <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar Odontopediatria!" target="_blank" class="card" data-aos="fade-up" onclick="window.va('event', 'Card_Pediatria')">
                         <i class="fa-solid fa-child"></i>
                         <h3>Pediatria</h3>
                         <p>Atendimento lúdico para os pequenos.</p>
                     </a>
 
-                    <a href="https://wa.me/5585996217976?text=Olá, preciso de um atendimento urgente!" target="_blank" class="card card-alerta" data-aos="fade-up">
+                    <a href="https://wa.me/5585996217976?text=Olá, preciso de um atendimento urgente!" target="_blank" class="card card-alerta" data-aos="fade-up" onclick="window.va('event', 'Card_Emergencias')">
                         <i class="fa-solid fa-kit-medical"></i>
                         <h3>Emergências</h3>
                         <p>Alívio imediato para dor e traumas.</p>
@@ -244,8 +248,9 @@
             </div>
 
             <div class="redes-sociais">
-                <a href="https://www.instagram.com/camilarapereira/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/5585996217976" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <!-- Links de Rodapé -->
+                <a href="https://www.instagram.com/camilarapereira/" target="_blank" aria-label="Instagram" onclick="window.va('event', 'Instagram_Rodape')"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/5585996217976" target="_blank" aria-label="WhatsApp" onclick="window.va('event', 'WhatsApp_Rodape')"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
@@ -264,6 +269,7 @@
         </div>
     </div>
 
+    <!-- Scripts da Página -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -314,11 +320,13 @@
         }
     </script>
 
+    <!-- Vercel Web Analytics (Garante o funcionamento do window.va) -->
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
+    <!-- Vercel Speed Insights -->
     <script>
       window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
     </script>
