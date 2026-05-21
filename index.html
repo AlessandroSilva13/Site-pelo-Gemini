@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Dra. Camila Alves | Odontologia Humanizada</title>
-    <meta name="google-site-verification" content="vsQUSGlh7eWGgHMCUVDt6A3ua56oZVguU0rbiWegzb0" />
+    
+    <meta name="google-site-verification" content="COLE_O_SEU_CODIGO_AQUI" />
+    
     <meta name="description" content="Especialista em Reabilitação Oral e Estética. Odontologia humanizada e de alto padrão com a Dra. Camila Alves.">
 
     <link rel="icon" href="./Imagens/dente-logo.jpg" type="image/jpg">
@@ -21,9 +23,12 @@
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://dracamilaalves.vercel.app/">
 
+    <link rel="preload" as="image" href="./Imagens/CAMILA_CONSULTORIO 19.webp" fetchpriority="high">
+
     <link rel="stylesheet" href="style.css">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
@@ -31,7 +36,6 @@
 
 <body>
 
-    <!-- Botão Flutuante do WhatsApp -->
     <a href="https://wa.me/5585996217976" class="btn-flutuante" target="_blank" aria-label="Falar no WhatsApp" onclick="window.va('event', 'WhatsApp_Flutuante')">
         <i class="fa-brands fa-whatsapp"></i>
         <span>Agendar Consulta</span>
@@ -86,7 +90,6 @@
             <div class="hero-cta-group">
                 <a href="https://wa.me/5585996217976" target="_blank" class="btn-principal btn-mobile-pri" onclick="window.va('event', 'WhatsApp_Destaque_Topo')">Agendar Agora</a>
                 
-                <!-- Botão de Vídeo -->
                 <button onclick="window.va('event', 'Video_Apresentacao'); abrirVideo()" class="btn-play-video">
                     <i class="fa-solid fa-play"></i> Conhecer a Experiência
                 </button>
@@ -95,7 +98,7 @@
     </section>
 
     <section class="secao-foto-intermediaria" data-aos="fade-up">
-        <img src="./Imagens/CAMILA_CONSULTORIO 19.webp" alt="Detalhe do bordado personalizado no jaleco da Dra. Camila Alves">
+        <img src="./Imagens/CAMILA_CONSULTORIO 19.webp" alt="Detalhe do bordado personalizado no jaleco da Dra. Camila Alves" fetchpriority="high">
     </section>
 
     <section id="sobre" class="interativa secao-destaque">
@@ -106,7 +109,6 @@
                     Odontologia focada no conforto. Transformamos sua visita ao dentista num momento de renovação e autoestima.
                 </p>
                 <div class="botoes-interativos">
-                    <!-- Abas interativas -->
                     <button class="active-btn" onclick="window.va('event', 'Aba_Vida_Academica'); mostrarConteudo('formacao', this)">Vida Acadêmica</button>
                     <button onclick="window.va('event', 'Aba_Meus_Principios'); mostrarConteudo('principios', this)">Meus Princípios</button>
                 </div>
@@ -126,7 +128,7 @@
     </section>
 
     <section class="secao-foto-intermediaria" data-aos="fade-up">
-        <img src="./Imagens/CAMILA_CONSULTORIO 26.webp" alt="Detalhe do ambiente clínico Dra. Camila Alves">
+        <img src="./Imagens/CAMILA_CONSULTORIO 26.webp" alt="Detalhe do ambiente clínico Dra. Camila Alves" loading="lazy">
     </section>
 
     <section id="especialidades" class="secao-bege">
@@ -136,7 +138,6 @@
                 <p class="subtitulo-grid" data-aos="fade-up">Cuidamos de cada detalhe do seu sorriso.</p>
 
                 <div class="cards-grid-completo" id="scrollContainer">
-                    <!-- Cards de Tratamentos -->
                     <a href="https://wa.me/5585996217976?text=Olá, gostaria de agendar uma consulta!" target="_blank" class="card card-destaque-bento" data-aos="fade-up" onclick="window.va('event', 'Card_Primeira_Consulta')">
                         <i class="fa-solid fa-medal"></i>
                         <div>
@@ -249,7 +250,6 @@
             </div>
 
             <div class="redes-sociais">
-                <!-- Links de Rodapé -->
                 <a href="https://www.instagram.com/camilarapereira/" target="_blank" aria-label="Instagram" onclick="window.va('event', 'Instagram_Rodape')"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://wa.me/5585996217976" target="_blank" aria-label="WhatsApp" onclick="window.va('event', 'WhatsApp_Rodape')"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
@@ -270,7 +270,6 @@
         </div>
     </div>
 
-    <!-- Scripts da Página -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -321,13 +320,11 @@
         }
     </script>
 
-    <!-- Vercel Web Analytics (Garante o funcionamento do window.va) -->
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
-    <!-- Vercel Speed Insights -->
     <script>
       window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
     </script>
