@@ -3,8 +3,6 @@
    ========================================================================== */
 
 /* 1. FONTES E CORES */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
-
 :root {
     --taupe-dark: #581c28;
     --taupe-light: #7a2838;
